@@ -14,7 +14,7 @@ public class PrimeOrNotOptimize {
     }
     if(count>=2)
     {
-      System.out.println(num + " is a Prime Number");
+        System.out.println(num + " is a Prime Number");
     }
     else{
       System.out.println(num + " is not a Prime Number");
