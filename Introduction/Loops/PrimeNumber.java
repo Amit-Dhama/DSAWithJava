@@ -1,6 +1,6 @@
 //Homework :- For Count Prime Number's till n Numbers.
 import java.util.*;
-public class CountPrimeNumber 
+public class PrimeNumber 
 {
   public static void main(String[] args)
   {
