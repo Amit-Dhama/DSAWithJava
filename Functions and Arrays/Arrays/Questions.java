@@ -57,8 +57,40 @@ public static int search(int[] arr){
     return 0;
   }
 
-  //Make Buildings from array Elements
+
+//4.) Make Buildings from array Elements
   //-----------------------------------------------------------------------------------------------------
+  public static void printBuildings(int[] heights){
+    int n = heights.length;
+    int maxHeight = Integer.MIN_VALUE;
+
+    for(int i=0;i<n;i++){
+      int currentBuildingHeight = heights[i];
+      maxHeight = Math.max(maxHeight,currentBuildingHeight);
+    }
+
+    int totalFloor = maxHeight;
+    int currentFloor = maxHeight;
+
+    while(currentFloor>0){
+      //go to every building and check if currB uilding is exists or not
+
+      for(int i=0;i<n;i++){
+        int currentBuildingHeight = heights[i];
+
+        if(currentFloor<=currentBuildingHeight){
+          System.out.println("* ");
+        } else{
+          System.out.println(" ");
+        }
+      }
+
+      //prepare for next line
+
+    System.out.println();
+    currentFloor--;
+    }
+  }
 
 
   public static void main(String[] args) {
@@ -77,6 +109,7 @@ public static int search(int[] arr){
     //int totalElementsGreaterThanX = countElementsGreaterThanX(arr);
     //int spanOfArray = findSpan(arr);
     //int indexOfTargetElement = search(arr);
+      printBuildings(arr);
 
 
     //System.out.println("The Total Elements greater than X : "+totalElementsGreaterThanX);
