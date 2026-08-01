@@ -1,7 +1,8 @@
 import java.util.*;
 public class Questions {
 
-  //1.) Find all elements Greater Than X -----------------------------------------------------------------------------------------------------
+//1.) Find all elements Greater Than X 
+  // -----------------------------------------------------------------------------------------------------
 public static int countElementsGreaterThanX(int[] arr){
 Scanner scn1 = new Scanner(System.in);
 System.out.println("Enter the value of X");
@@ -20,7 +21,6 @@ for(int i=0;i<arr.length;i++){
 }
 return count;
 }
-
 
 //2.) Find Span Of Arrays
 //-------------------------------------------------------------------------------------------------------
@@ -56,7 +56,6 @@ public static int search(int[] arr){
     }
     return 0;
   }
-
 
 //4.) Make Buildings from array Elements
   //-----------------------------------------------------------------------------------------------------
@@ -132,7 +131,6 @@ public static int search(int[] arr){
     return res;
   }
 
-
   //6.)Sum of Three Arrays
   //-----------------------------------------------------------------------------------------------------
   public static int[] sumOfThreeArrays(int[] arr1, int[] arr2, int[] arr3){
@@ -182,12 +180,10 @@ public static int search(int[] arr){
   }
 
 
-
   //7.) Find all SubArrays
   //-----------------------------------------------------------------------------------------------------
   public static void findAllSubArrays(int[] arr){
     int size = arr.length;
-    int temp = size;
 
       for(int si=0;si<size;si++){
         for(int ei=si;ei<size;ei++){
@@ -203,6 +199,119 @@ public static int search(int[] arr){
       }
   }
 
+  //8.)Print all Subsets of an Array
+  //-----------------------------------------------------------------------------------------------------
+  public static void printSubsetOfArray(int[] nums){
+    int n = nums.length;
+    int sub_set=(int)Math.pow(2,n);
+    int count = 0;
+    for(int i=0;i<sub_set;i++){
+      String sub = "";
+      int current_number=i;
+      
+      for(int idx=n-1;idx>=0;idx--){
+        int rem = current_number%2;
+        if(rem==0){
+          sub= "_,"+sub;
+        } else{
+          sub = nums[idx]+","+sub;
+        }
+        current_number/=2;
+      }
+      System.out.println(sub);
+      count++;
+    }
+    System.out.println("Total Number of Lines is : " +count);
+  }
+
+  //9.) Reverse an Array
+  //-----------------------------------------------------------------------------------------------------
+  public static int[] reverseArray(int[] arr){
+    int n = arr.length;
+    int left = 0;
+    int right = n-1;
+
+    for(left = 0,right = n-1;left<right;left++,right--){
+      int temp = arr[left];
+      arr[left] = arr[right];
+      arr[right] = temp;
+      
+    }
+    return arr;
+  }
+
+  //10.) Reverse an Array Optimization
+  //-----------------------------------------------------------------------------------------------------
+  public static int[] swap(int[] arr,int left,int right){
+    int temp = arr[left];
+    arr[left] = arr[right];
+    arr[right] = temp;
+    return arr;
+  }
+
+  public static int[] reverseArray1(int[] arr){
+    int n = arr.length;
+    int left = 0;
+    int right = n-1;
+
+    while(left<right){
+
+      int[] result = swap(arr,left,right);
+
+      //Updation part :- 
+      left++;
+      right--;
+    }
+    return arr;
+  }
+
+  //10.) Reverse an Array Optimization 2
+  //-----------------------------------------------------------------------------------------------------
+  public static int[] reverseArray2(int[] arr){
+    int n = arr.length;
+
+    for(int i=00;i<n;i++){
+      int temp = arr[i];
+      arr[i] = arr[n-1-i];
+     arr[n-1-i] = temp;
+    }
+    return arr;
+  }
+
+  //11.) B.) For reverse an array
+  //-----------------------------------------------------------------------------------------------------
+  public static void reverse(int[] arr, int left, int right){
+    while(left<right){
+      int temp = arr[right];
+      arr[right] = arr[left];
+      arr[left] = temp;
+      //Updation
+      left++;
+      right--;
+      
+    }
+  }
+
+  //11.) Rotate an Array
+  //-----------------------------------------------------------------------------------------------------
+  public static int[] rotateArray(int [] arr){
+
+    Scanner scn11 = new Scanner(System.in);
+    int n = arr.length;
+    System.out.println("Enter the value till ehere you wanted to rotate is : ");
+    int k = scn11.nextInt();
+    
+    k = k%n;
+    if(k<0){
+      k = k+n;
+    }
+
+    reverse(arr,0,n-1);
+    reverse(arr,0,k-1);
+    reverse(arr,k,n-1);
+
+    return arr;
+  }
 
 
 
@@ -253,7 +362,11 @@ public static int search(int[] arr){
       //printBuildings(arr);
     //int[] result = sumOfTwoArrays(arr1,arr2);
     //int[] result2 = sumOfThreeArrays(arr1,arr2,arr3);
-    findAllSubArrays(arr);
+    //findAllSubArrays(arr);
+    // printSubsetOfArray(arr);
+    // int[] result = reverseArray1(arr);
+    // int[] result = reverseArray1(arr);
+    int[] result11 = rotateArray(arr);
 
 
     //System.out.println("The Total Elements greater than X : "+totalElementsGreaterThanX);
@@ -266,5 +379,8 @@ public static int search(int[] arr){
     //printArray(result);
     //printArray(result2);
     //System.out.println("The sub arrays are : "+allSubArrays);
+    //printArray(reverseArray);
+    // printArray(result);
+    printArray(result11);
 }
 }
