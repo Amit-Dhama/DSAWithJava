@@ -1,9 +1,9 @@
 import java.util.*;
 public class Questions {
 
-//1.) Find all elements Greater Than X 
+  //1.) Find all elements Greater Than X 
   // -----------------------------------------------------------------------------------------------------
-public static int countElementsGreaterThanX(int[] arr){
+  public static int countElementsGreaterThanX(int[] arr){
 Scanner scn1 = new Scanner(System.in);
 System.out.println("Enter the value of X");
 int x = scn1.nextInt();
@@ -22,9 +22,9 @@ for(int i=0;i<arr.length;i++){
 return count;
 }
 
-//2.) Find Span Of Arrays
+  //2.) Find Span Of Arrays
 //-------------------------------------------------------------------------------------------------------
-public static int findSpan(int[] arr){
+  public static int findSpan(int[] arr){
   int max = Integer.MIN_VALUE;
   int min = Integer.MAX_VALUE;
   for(int i=0;i<arr.length;i++){
@@ -40,9 +40,9 @@ public static int findSpan(int[] arr){
   return span;
 }
 
-//3.) Find index of Target Element
+  //3.) Find index of Target Element
 //-------------------------------------------------------------------------------------------------------
-public static int search(int[] arr){
+  public static int search(int[] arr){
   Scanner scn3 = new Scanner(System.in);
   System.out.println("Enter Target Number! Please");
   int target = scn3.nextInt();
@@ -57,7 +57,7 @@ public static int search(int[] arr){
     return 0;
   }
 
-//4.) Make Buildings from array Elements
+  //4.) Make Buildings from array Elements
   //-----------------------------------------------------------------------------------------------------
   public static void printBuildings(int[] heights){
     int n = heights.length;
@@ -91,7 +91,7 @@ public static int search(int[] arr){
     }
   }
 
-  //5.)Sum of Two Arrays
+  //5.) Sum of Two Arrays
   //-----------------------------------------------------------------------------------------------------
   public static int[] sumOfTwoArrays(int[] arr1, int[] arr2){
     int n1 = arr1.length;
@@ -131,7 +131,7 @@ public static int search(int[] arr){
     return res;
   }
 
-  //6.)Sum of Three Arrays
+  //6.) Sum of Three Arrays
   //-----------------------------------------------------------------------------------------------------
   public static int[] sumOfThreeArrays(int[] arr1, int[] arr2, int[] arr3){
     int n1 = arr1.length;
@@ -199,7 +199,7 @@ public static int search(int[] arr){
       }
   }
 
-  //8.)Print all Subsets of an Array
+  //8.) Print all Subsets of an Array
   //-----------------------------------------------------------------------------------------------------
   public static void printSubsetOfArray(int[] nums){
     int n = nums.length;
@@ -293,7 +293,9 @@ public static int search(int[] arr){
   }
 
   //11.) Rotate an Array
-  //-----------------------------------------------------------------------------------------------------
+  //-------------------------------------------------------------------------------------------------------------------------------------------
+
+  //Rotate an array (Leetcode 189)
   public static int[] rotateArray(int [] arr){
 
     Scanner scn11 = new Scanner(System.in);
@@ -313,8 +315,64 @@ public static int search(int[] arr){
     return arr;
   }
 
+  //12.) Find maximum sum of SubArray
+  //-----------------------------------------------------------------------------------------------------
+  public static int maxSubArray(int[] arr){
+    int n = arr.length;
 
+    int maxSum = Integer.MIN_VALUE;
 
+    for(int si=0;si<n;si++){
+      for(int ei=si;ei<n;ei++){
+        int currSum=0;
+        for(int k=si;k<=ei;k++){
+          currSum+=arr[k];
+        }
+        maxSum = Math.max(maxSum,currSum);
+      }
+    }
+    return maxSum;
+  }
+
+  //13.) Find maximum sum of SubArray
+  //-------------------------------------------------------------------------------------------------------------------------------------------
+  public static int maximumSubArray(int[] arr){
+
+    int n = arr.length;
+    int maximum_subArray=0;
+
+    for(int si=0;si<n;si++){
+      int csum=0;
+      for(int ei=si;ei<n;ei++){
+        csum+=arr[ei];
+      }
+
+      maximum_subArray = Math.max(maximum_subArray,csum);
+    }
+    return maximum_subArray;
+  }
+
+  //14.) Find maximum sum of SubArray by Kadane's Algorithm :-
+  //-------------------------------------------------------------------------------------------------------------------------------------------
+  
+  //O(N) Kadane's Algorithm (Leetcode 53)
+  public static int maximumsubArray(int[] arr){
+    
+    int meh = 0; //meh -> Maximum Ending Here
+    int n = arr.length;
+    int maximumNumber = Integer.MIN_VALUE;
+
+    for(int i=0;i<n;i++){
+      meh += arr[i];
+
+          maximumNumber = Math.max(maximumNumber,meh);
+
+      if(meh<0){
+        meh=0;
+      }
+    }
+    return meh;
+  }
 
 
 
@@ -352,35 +410,42 @@ public static int search(int[] arr){
     Scanner scn = new Scanner(System.in);
 
     int[] arr = takeArrayInput();
-    //int[] arr1 = takeArrayInput();
-    // int[] arr2 = takeArrayInput();
-    // int[] arr3 = takeArrayInput();
+    //  int[] arr1 = takeArrayInput();
+    //  int[] arr2 = takeArrayInput();
+    //  int[] arr3 = takeArrayInput();
    
-    //int totalElementsGreaterThanX = countElementsGreaterThanX(arr);
-    //int spanOfArray = findSpan(arr);
-    //int indexOfTargetElement = search(arr);
-      //printBuildings(arr);
-    //int[] result = sumOfTwoArrays(arr1,arr2);
-    //int[] result2 = sumOfThreeArrays(arr1,arr2,arr3);
-    //findAllSubArrays(arr);
-    // printSubsetOfArray(arr);
-    // int[] result = reverseArray1(arr);
-    // int[] result = reverseArray1(arr);
-    int[] result11 = rotateArray(arr);
+    //  int result1 = countElementsGreaterThanX(arr);
+    //  int result2 = findSpan(arr);
+    //  int result3 = search(arr);
+    //  printBuildings(arr); //result4
+    //  int[] result5 = sumOfTwoArrays(arr1,arr2);
+    //  int[] result6 = sumOfThreeArrays(arr1,arr2,arr3);
+    //  findAllSubArrays(arr); //result7
+    //  printSubsetOfArray(arr); //result8
+    //  int[] result9 = reverseArray1(arr);
+    //  int[] result10 = reverseArray2(arr);
+    //  int[] result11 = rotateArray(arr);
+    //  int result12 = maxSubArray(arr);
+    //  int result13 = maximumSubArray(arr);
+        int result14 = maximumsubArray(arr);
 
 
-    //System.out.println("The Total Elements greater than X : "+totalElementsGreaterThanX);
-    //System.out.println("The Sppan of an array : "+spanOfArray);
-    //if(indexOfTargetElement==0){
-    //System.out.println("Target, Not Found");
-    //}
-    //else{
-    //System.out.println("The element of Target Number is lying in : " +indexOfTargetElement);
-    //printArray(result);
-    //printArray(result2);
-    //System.out.println("The sub arrays are : "+allSubArrays);
-    //printArray(reverseArray);
-    // printArray(result);
-    printArray(result11);
+
+
+    //  System.out.println("The Total Elements greater than X : " +result1);
+    //  System.out.println("The Sppan of an array : "+result2);
+    //  if(result3==0){
+    //  System.out.println("Target, Not Found");
+    //  }
+    //  else{
+    //  System.out.println("The element of Target Number is lying in : " +indexOfTargetElement);
+    //  printArray(result5);
+    //  printArray(result6);
+    //  printArray(result9);
+    //  printArray(result10);
+    //  printArray(result11);
+    //  System.out.println("The Maximum Sum of Sub Array will be " +result12);
+    //  System.out.println("The Maximum Sum of Sub Array will be " +result13);
+        System.out.println(" The Maximum sum of SubArray by kadane's Algorithm : " + result14);
 }
 }
