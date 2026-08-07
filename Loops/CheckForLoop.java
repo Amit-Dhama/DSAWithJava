@@ -4,6 +4,7 @@ public class CheckForLoop {
     for(int a=5; a<10; a++)
     {
       System.out.println(a);
+      //System.out.println();
     }
   }
 }
